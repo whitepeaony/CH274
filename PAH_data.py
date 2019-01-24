@@ -165,16 +165,16 @@ def mol_with_atom_index(mol):
         mol.GetAtomWithIdx(idx).SetProp('molAtomMapNumber', str(mol.GetAtomWithIdx(idx).GetIdx()))
     return mol
 
-
-def draw_MO(mol, eigenvecs, n=None):
+def draw_MO(mol, eigenvecs, n=0):
     """
     draw molecular orbital onto 2D molecule structure using the rdkit_mol object and the eigenvectors
     """
     from rdkit.Chem.Draw import rdMolDraw2D
     from IPython.display import SVG, display
 
-    highlight = range(len(eigenvecs))
-    if n is None:
+    highlight=range(len(eigenvecs))
+    eigenvecs = np.array(eigenvecs)
+    if len(eigenvecs.shape)==1:
         radii_list = np.abs(eigenvecs)
         color_list = np.sign(eigenvecs)
     else:
