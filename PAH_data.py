@@ -141,7 +141,7 @@ def draw_MO(mol, eigenvecs, n=0):
         radii[i] = radii_list[i]
         if c<0:
             colors[i] = (0,0,1)
-        elif c>0:
+        elif c>=0:
             colors[i] = (1,0,0)
         else:
             raise ValueError('something is wrong with the signs.')
